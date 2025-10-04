@@ -8,7 +8,11 @@
             InitializeComponent();
         }
 
-        
+        private void dodaj_zadanie(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 
 }

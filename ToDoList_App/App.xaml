@@ -27,12 +27,17 @@
             </Style>
             <Style x:Key="poleWpiszStyle"
                    TargetType="Frame">
-                <Setter Property="MinimumHeightRequest" Value="45" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="270" />
+                <Setter Property="BorderColor" Value="#363778" />
                 <Setter Property="CornerRadius" Value="20" />
                 <Setter Property="BackgroundColor" Value="#363778" />
             </Style>
             <Style x:Key="poleStyle"
                    TargetType="Frame">
+                <Setter Property="Margin" Value="0, 0, 0, 10" />
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="BorderColor" Value="#5E71CD" />
                 <Setter Property="Background" Value="#5E71CD" />
             </Style>
             <Style x:Key="podsumowanieStyle"
@@ -40,6 +45,7 @@
                 <Setter Property="HeightRequest" Value="100" />
                 <Setter Property="WidthRequest" Value="300" />
                 <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="BorderColor" Value="#363778" />
                 <Setter Property="BackgroundColor" Value="#363778" />
             </Style>
             <Style x:Key="duzyTekstStyle"

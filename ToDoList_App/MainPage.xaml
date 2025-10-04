@@ -4,10 +4,53 @@
              x:Class="ToDoList_App.MainPage"
              BackgroundColor="#6A7EE2">
 
-    <Grid Padding="20" RowDefinitions="*, *, *, *" ColumnDefinitions="*">
-        <Frame Style="{StaticResource poleTytuloweStyle}">
+    <Grid Padding="20" RowDefinitions="Auto, Auto, *, Auto" ColumnDefinitions="*, Auto">
+        <Frame Style="{StaticResource poleTytuloweStyle}"
+               Grid.ColumnSpan="2"
+               Grid.Row="0">
             <Label Text="To Do List" Style="{StaticResource duzyTekstStyle}"/>
         </Frame>
+
+        <Frame Style="{StaticResource poleWpiszStyle}"
+               Grid.Row="1"
+               Grid.Column="0"
+               Margin="0, 10, 10, 10">
+            <Entry x:Name="nowe_zadanie"
+                   TextColor="#C8EAFF"
+                   Placeholder="Dodaj zadanie..."
+                   PlaceholderColor="#C8EAFF"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Center"
+                   Margin="10,0"/>
+        </Frame>
+        <Button Clicked="dodaj_zadanie" 
+                Text="+"
+                Grid.Row="1"
+                Grid.Column="1"
+                HeightRequest="43"
+                WidthRequest="40"
+                CornerRadius="20"
+                BackgroundColor="#363778"
+                TextColor="#C8EAFF"
+                FontSize="20"/>
+        <Frame Style="{StaticResource poleStyle}" Grid.ColumnSpan="2" Grid.Row="2">
+            <CollectionView x:Name="elementy_widok">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Style="{StaticResource elementyListyStyle}">
+                            <Label Text="{Binding Name}" TextColor="#C8EAFF" VerticalOptions="Center" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Frame>
+
+        <Frame Style="{StaticResource podsumowanieStyle}"
+               Grid.Row="3" Grid.ColumnSpan="2">
+            <Label Text="..." VerticalOptions="Start" HorizontalOptions="Start" Style="{StaticResource tekstStyle}"/>
+        </Frame>
+
     </Grid>
 
 </ContentPage>
