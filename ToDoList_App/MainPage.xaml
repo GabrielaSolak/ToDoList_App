@@ -5,6 +5,7 @@
              BackgroundColor="#6A7EE2">
 
     <Grid Padding="20" RowDefinitions="Auto, Auto, *, Auto" ColumnDefinitions="*, Auto">
+        
         <Frame Style="{StaticResource poleTytuloweStyle}"
                Grid.ColumnSpan="2"
                Grid.Row="0">
@@ -14,7 +15,7 @@
         <Frame Style="{StaticResource poleWpiszStyle}"
                Grid.Row="1"
                Grid.Column="0"
-               Margin="0, 10, 10, 10">
+               Margin="0, 15, 10, 15">
             <Entry x:Name="nowe_zadanie"
                    TextColor="#C8EAFF"
                    Placeholder="Dodaj zadanie..."
@@ -24,31 +25,72 @@
                    VerticalOptions="Center"
                    Margin="10,0"/>
         </Frame>
+        
         <Button Clicked="dodaj_zadanie" 
                 Text="+"
                 Grid.Row="1"
                 Grid.Column="1"
-                HeightRequest="43"
+                HeightRequest="45"
                 WidthRequest="40"
                 CornerRadius="20"
                 BackgroundColor="#363778"
                 TextColor="#C8EAFF"
-                FontSize="20"/>
-        <Frame Style="{StaticResource poleStyle}" Grid.ColumnSpan="2" Grid.Row="2">
+                FontSize="22"/>
+        
+        <Frame Style="{StaticResource poleStyle}" Grid.ColumnSpan="2" Grid.Row="2" Padding="10">
             <CollectionView x:Name="elementy_widok" ItemsSource="{Binding Zadania}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Style="{StaticResource elementyListyStyle}">
-                            <Label Text="{Binding Name}" TextColor="#C8EAFF" VerticalOptions="Center" />
-                        </Frame>
+                        <Grid ColumnDefinitions="*, Auto" Padding="0" Margin="0, 6">
+                            <Frame Style="{StaticResource elementyListyStyle}" Grid.Column="0" Padding="12,6">
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label Text="{Binding Name}"
+                                           Grid.Column="0"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           FontSize="16"
+                                           TextColor="{Binding TextColor}" />
+                                    <Button Text="x"
+                                            Grid.Column="1"
+                                            BackgroundColor="Transparent"
+                                            TextColor="#C8EAFF"
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            Padding="6,0"
+                                            Clicked="usun_zadanie"/>
+                                </Grid>
+                            </Frame>
+
+                            <Frame Grid.Column="1"
+                                   WidthRequest="36"
+                                   HeightRequest="36"
+                                   CornerRadius="18"
+                                   BackgroundColor="#363778"
+                                   BorderColor="#363778"
+                                   HasShadow="False"
+                                   VerticalOptions="Center"
+                                   Margin="8,0,0,0"
+                                   Padding="0">
+                                <CheckBox IsChecked="{Binding czyZrobione}" 
+                                          Color="#C8EAFF" 
+                                          HorizontalOptions="Center" 
+                                          VerticalOptions="Center"
+                                          CheckedChanged="zmien_status"/>
+                            </Frame>
+                        </Grid>
                     </DataTemplate>
+
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Frame>
 
         <Frame Style="{StaticResource podsumowanieStyle}"
                Grid.Row="3" Grid.ColumnSpan="2">
-            <Label Text="..." VerticalOptions="Start" HorizontalOptions="Start" Style="{StaticResource tekstStyle}"/>
+            <Label x:Name="podsumowanie" 
+                   Text="..." 
+                   VerticalOptions="Start" 
+                   HorizontalOptions="Start" 
+                   Style="{StaticResource tekstStyle}"/>
         </Frame>
 
     </Grid>

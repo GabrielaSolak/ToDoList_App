@@ -21,8 +21,10 @@
             </Style>
             <Style x:Key="elementyListyStyle"
                    TargetType="Frame">
-                <Setter Property="MinimumHeightRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="230" />
                 <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="BorderColor" Value="#363778" />
                 <Setter Property="BackgroundColor" Value="#363778" />
             </Style>
             <Style x:Key="poleWpiszStyle"

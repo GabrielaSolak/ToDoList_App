@@ -15,9 +15,47 @@ namespace ToDoList_App
         {
             if (!string.IsNullOrWhiteSpace(nowe_zadanie.Text))
             {
-                Zadania.Add(new Zadanie { Name = nowe_zadanie.Text });
+                Zadanie nowe = new Zadanie();
+                nowe.Name = nowe_zadanie.Text;
+                nowe.czyZrobione = false;
+
+                Zadania.Add(nowe);
                 nowe_zadanie.Text = string.Empty;
+
+                AkutualizujPodsumowanie();
             }
+        }
+
+        private void usun_zadanie(object sender, EventArgs e)
+        {
+            if (sender is Button btn && btn.BindingContext is Zadanie zadanie)
+            {
+                Zadania.Remove(zadanie);
+                AkutualizujPodsumowanie();
+            }
+        }
+
+        private void zmien_status(object sender, CheckedChangedEventArgs e)
+        {
+            if (sender is CheckBox check && check.BindingContext is Zadanie zadanie)
+            {
+                zadanie.czyZrobione = e.Value;
+                elementy_widok.ItemsSource = null;
+                elementy_widok.ItemsSource = Zadania;
+                AkutualizujPodsumowanie();
+            }
+        }
+
+        private void AkutualizujPodsumowanie()
+        {
+            int wykonane = 0;
+            foreach (Zadanie z in Zadania)
+            {
+                if (z.czyZrobione)
+                    wykonane++;
+            }
+            podsumowanie.Text = $"Wykonano {wykonane}/{Zadania.Count} zadań";
+
         }
 
     }
@@ -25,6 +63,20 @@ namespace ToDoList_App
     public class Zadanie
     {
         public string Name { get; set; }
+        public bool czyZrobione { get; set; }
+
+        public Color TextColor
+            {
+                get
+                {
+                    if (czyZrobione)
+                        return Colors.Gray;
+                    else
+                        return Color.FromArgb("#C8EAFF");
+                }
+            }
     }
+
+    
 
 }
