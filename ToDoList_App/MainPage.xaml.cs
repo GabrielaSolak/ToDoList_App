@@ -40,8 +40,18 @@ namespace ToDoList_App
             if (sender is CheckBox check && check.BindingContext is Zadanie zadanie)
             {
                 zadanie.czyZrobione = e.Value;
-                elementy_widok.ItemsSource = null;
-                elementy_widok.ItemsSource = Zadania;
+
+                if (check.Parent is Frame ramkaCheckBoxa && ramkaCheckBoxa.Parent is Grid wiersz)
+                {
+                    if (wiersz.Children[0] is Frame ramkaTekstu && ramkaTekstu.Content is Grid siatka)
+                    {
+                        if (siatka.Children[0] is Label etykieta)
+                        {
+                            etykieta.TextColor = e.Value ? Color.FromArgb("#6A7EE2") : Color.FromArgb("#C8EAFF");
+                        }
+                    }
+                }
+
                 AkutualizujPodsumowanie();
             }
         }

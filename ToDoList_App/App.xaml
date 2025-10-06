@@ -14,7 +14,7 @@
             <Style x:Key="poleTytuloweStyle"
                    TargetType="Frame">
                 <Setter Property="HeightRequest" Value="155" />
-                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="WidthRequest" Value="100" />
                 <Setter Property="CornerRadius" Value="18" />
                 <Setter Property="BorderColor" Value="#363778" />
                 <Setter Property="BackgroundColor" Value="#363778" />
