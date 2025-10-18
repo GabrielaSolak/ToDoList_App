@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoList_App.login_panel"
+             Title="login_panel">
+    <VerticalStackLayout>
+        <Label 
+            Text="Logowanie"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label
+            Text="Podaj login: "/>
+        <Entry
+            x:Name="login"
+            Placeholder="login..." />
+        
+        <Label
+            Text="Podaj hasło: "/>
+        <Entry
+            x:Name="haslo"
+            IsPassword="True"
+            Placeholder="haslo..." />
+
+        <Button
+            Text="Zaloguj" 
+            Clicked="logowanie" />
+    </VerticalStackLayout>
+</ContentPage>
