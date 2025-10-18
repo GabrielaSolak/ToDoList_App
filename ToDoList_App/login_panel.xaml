@@ -2,28 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ToDoList_App.login_panel"
-             Title="login_panel">
+             Background="#6A7EE2">
     <VerticalStackLayout>
-        <Label 
-            Text="Logowanie"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-
+        <Frame Style="{StaticResource poleTytuloweStyle}" Margin="20">
+            <Label 
+                Text="To Do List"
+                Style="{StaticResource duzyTekstStyle}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </Frame>
         <Label
-            Text="Podaj login: "/>
+            Text="Podaj login: "
+            Margin="5"
+            Style="{StaticResource tekstStyle}"/>
+        
         <Entry
             x:Name="login"
+            Margin="5"
+            PlaceholderColor="#363778"
             Placeholder="login..." />
         
         <Label
-            Text="Podaj hasło: "/>
+            Text="Podaj hasło: "
+            Margin="5"
+            Style="{StaticResource tekstStyle}"/>
         <Entry
             x:Name="haslo"
             IsPassword="True"
+            Margin="5"
+            PlaceholderColor="#363778"
             Placeholder="haslo..." />
 
         <Button
             Text="Zaloguj" 
+            WidthRequest="170"
+            Margin="25"
+            TextColor="#C8EAFF"
+            FontFamily="SatoshiVariable"
+            FontSize="20"
             Clicked="logowanie" />
     </VerticalStackLayout>
 </ContentPage>
