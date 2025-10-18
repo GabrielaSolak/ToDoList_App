@@ -62,7 +62,7 @@
                 <Setter Property="FontSize" Value="17" />
                 <Setter Property="FontFamily" Value="SatoshiVariable" />
             </Style>
-            
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
