@@ -1,10 +1,13 @@
 ﻿using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Text.Json;
 
 namespace ToDoList_App
 {
     public partial class MainPage : ContentPage
     {
         public ObservableCollection<Zadanie> Zadania { get; set; } = new();
+        private string filePath = Path.Combine(FileSystem.AppDataDirectory, "tasks.json");
         public MainPage()
         {
             InitializeComponent();
@@ -68,6 +71,20 @@ namespace ToDoList_App
 
         }
 
+        private void zapisz_Button(object sender, EventArgs e)
+        {
+            string json = JsonSerializer.Serialize(Zadania);
+            File.WriteAllText(filePath, json);
+        }
+        private void przywroc_Button(object sender, EventArgs e)
+        {
+            string json = File.ReadAllText(filePath);
+            var restored = JsonSerializer.Deserialize<List<Zadanie>>(json);
+            Zadania.Clear();
+            foreach (var item in restored)
+                Zadania.Add(item);
+        }
+
     }
 
     public class Zadanie
@@ -86,7 +103,4 @@ namespace ToDoList_App
                 }
             }
     }
-
-    
-
 }
